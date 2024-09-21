@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -31,14 +33,15 @@ public class FormController {
         return "contactFormView";
     }
 
-    @GetMapping("/confirmInput")
+    @PostMapping("/confirm")
     public String confirm(Model model,
                           @Validated Form form,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes){
         if(!bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("form",form);
-            return "redirect:/confirm";
+            model.addAttribute("form",form);
+
+            return "confirmView";
         }else{
             redirectAttributes.addFlashAttribute("form",form);
             redirectAttributes.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX+

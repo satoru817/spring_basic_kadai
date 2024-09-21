@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>お問い合わせフォーム</h2>
-    <form th:action="@{/confirmInput}" th:object="${form}">
+    <form th:action="@{/confirm}" th:object="${form}" method="post">
         <div>
             <label for="name">お名前</label><br>
             <input type="text" th:field="*{name}">
