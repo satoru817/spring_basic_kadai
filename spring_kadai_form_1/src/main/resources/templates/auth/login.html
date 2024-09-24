@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>ログイン</h1>
+  <div th:if="${param.error}" style="color:red;">
+    ユーザー名またはパスワードが正しくありません。
+  </div>
+  <form th:action="@{/login}" method="post">
+    <input type="text" id="username" name="username" placeholder="enter your user name"><br>
+    <input type="password" id="password" name="password" placeholder="enter your password"><br>
+    <p><input type="submit" value="ログイン"></p>
+  </form>
+
+</body>
+</html>

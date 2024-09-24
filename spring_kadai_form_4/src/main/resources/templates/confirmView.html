@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>お問い合わせ内容確認</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>お名前</th>
+            <th>メールアドレス</th>
+            <th>お問い合わせ内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td th:text="${inq.getName()}"></td>
+            <td th:text="${inq.getMail()}"></td>
+            <td th:text="${inq.getContent()}" style="width:300px;"></td>
+        </tr>
+    </tbody>
+</table>
+<form th:action="@{/register}" method="post" th:object="${inq}">
+    <input type="hidden" th:field="*{name}">
+    <input type="hidden" th:field="*{mail}">
+    <input type="hidden" th:field="*{content}">
+    <input type="submit" value="登録">
+</form>
+</body>
+</html>
